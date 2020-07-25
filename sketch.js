@@ -6,7 +6,7 @@ var engine, world;
 var box1, pig1;
 var backgroundImg;
 var ground2;
-var chain;
+var sling;
 
 function preload() {
     backgroundImg = loadImage("sprites/bg.png");
@@ -39,7 +39,7 @@ function setup(){
     bird = new Bird(100,100);
 
     //log6=new Log(200,100,100,PI);
-    chain = new Chain(bird.body,{x:200,y:100});
+    sling = new Slingshot(bird.body,{x:200,y:100});
 
 }
 
@@ -67,7 +67,15 @@ function draw(){
 
     bird.display();
 
-    chain.display();
+    sling.display();
 
-    
+}
+
+function mouseDragged(){
+Matter.Body.setPosition(bird.body, {
+    x: mouseX, y: mouseY
+})
+}
+function mouseReleased(){
+sling.fly()
 }
