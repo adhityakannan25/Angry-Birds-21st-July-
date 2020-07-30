@@ -39,7 +39,7 @@ function setup(){
     bird = new Bird(100,100);
 
     //log6=new Log(200,100,100,PI);
-    sling = new Slingshot(bird.body,{x:200,y:100});
+    sling = new Slingshot(bird.body,{x:200,y:50});
 
 }
 
