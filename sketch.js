@@ -8,6 +8,9 @@ var backgroundImg;
 var ground2;
 var sling;
 
+var gameState = "onSling"
+
+
 function preload() {
     backgroundImg = loadImage("sprites/bg.png");
 }
@@ -72,12 +75,14 @@ function draw(){
 }
 
 function mouseDragged(){
-Matter.Body.setPosition(bird.body, {
+    if(gameState!="launched")
+    Matter.Body.setPosition(bird.body, {
     x: mouseX, y: mouseY
 })
 }
 function mouseReleased(){
-sling.fly()
+ gameState="launched"
+ sling.fly()
 }
 function keyPressed(){
 if(keyCode===32){
