@@ -22,6 +22,5 @@ class Bird extends BaseClass {
     for(var i=0; i<this.trajectory.length;i++){
      image(this.smokeImg,this.trajectory[i][0],this.trajectory[i][1])
     }
-
   }
 }

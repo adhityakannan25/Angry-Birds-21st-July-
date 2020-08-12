@@ -23,7 +23,7 @@ function setup(){
 
 
     ground = new Ground(600,height,1200,20);
-    platform = new Ground(150, 305, 300, 170);
+    platform = new Ground(150, 305, 300, 210);
 
     box1 = new Box(700,320,70,70);
     box2 = new Box(920,320,70,70);
@@ -58,26 +58,45 @@ function draw(){
     Engine.update(engine);
     //strokeWeight(4);
     box1.display();
+    box1.score()
+
     box2.display();
+    box2.score();
+
     ground.display();
+
     pig1.display();
     pig1.score();
+
     log1.display();
+    log1.score();
 
     box3.display();
+    box3.score();
+
     box4.display();
+    box4.score();
+
     pig3.display();
     pig3.score();
+
     log3.display();
+    log3.score();
 
     box5.display();
+    box5.score();
+
     log4.display();
+    log4.score();
+
     log5.display();
+    log5.score();
 
     bird.display();
     platform.display();
     //log6.display();
-    slingshot.display();    
+    slingshot.display();  
+    
 }
 
 function mouseDragged(){
@@ -93,10 +112,16 @@ function mouseReleased(){
 }
 
 function keyPressed(){
+
     if(keyCode === 32){
-       // slingshot.attach(bird.body);
+      Matter.Body.setPosition(bird.body, {x: 210, y: 55});
+      slingshot.attach(bird.body);
+      bird.trajectory=[]
+      gameState="onSling";
+
     }
 }
+
 
 async function getBackgroundImg(){
     var response = await fetch("http://worldtimeapi.org/api/timezone/Asia/Tokyo");
